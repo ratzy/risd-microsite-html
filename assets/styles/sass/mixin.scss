@@ -1,0 +1,105 @@
+@import 'variable.scss';
+
+@mixin serif-font{
+    font-family: 'Spectral', serif;
+}
+
+@mixin sanserif-font{
+    font-family: 'Work Sans', sans-serif;
+}
+@mixin line-height{
+    line-height: 140%;
+}
+@mixin card-style{
+    background: rgba(255, 255, 255, 0.15);
+    mix-blend-mode: normal;
+    box-shadow: 3.23px 6.46px 48.46px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(7.5px);
+    border-radius: 30px;
+}
+
+@mixin lg-view-card-padding{
+    padding: 8.23vh 3vw 5.14vh;
+}
+
+@mixin md-view-card-padding{
+    padding: 6.17vh 3vw 5.14vh;
+}
+
+@mixin sm-view-card-padding{
+    padding: 8.23vh 3vw 5.14vh;
+}
+
+
+@mixin fixed-wrapper{
+    position:fixed;
+}
+@mixin rel-wrapper{
+    position:relative;
+}
+@mixin abs-wrapper{
+    position:absolute;
+}
+
+@mixin full-width{
+    width: 100%;
+}
+.full-width {
+    width: 100%;
+}
+
+@mixin block-element{
+    display: block;
+}
+.block-element{
+    display: block;
+}
+@mixin inline-element{
+    display: inline-block;
+}
+@mixin flex-wrapper{
+    display: flex;
+}
+
+@mixin column-direction{
+    flex-direction: column;
+}
+
+@mixin transform($property) {
+    transform: $property;
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+}
+
+@mixin transition($property) {
+    transition: $property;
+    -webkit-transition: $property;
+    -moz-transition: $property;
+    -ms-transition: $property;
+    -o-transition: $property;
+}
+
+@mixin normal-transition{
+    @include transition(all .65s);
+}
+
+@mixin pointed-cursor{
+    cursor: pointer;
+}
+
+
+@mixin load-from-bottom{
+    @include transform(translateY(1.5rem));
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.16, 1.03, 1, 1);
+}
+
+@mixin fade-border-in{
+    border-color: transparent;
+}
+
+@mixin fade-in{
+    opacity: 0;
+}

@@ -1,0 +1,327 @@
+@import 'mixin.scss';
+
+body{
+    @include line-height;
+    overflow: hidden;
+    font-size: $normalFontSize;
+    letter-spacing: 0.03rem;
+    
+}
+body *{
+    box-sizing: border-box;
+}
+
+.btn{
+    @include normal-transition;
+    @include sanserif-font;
+    @include flex-wrapper;
+    @include pointed-cursor;
+    letter-spacing: 3px;
+    text-align: left;
+    color: $whiteColor;
+    align-items: center;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    gap:10px;
+    white-space: nowrap;
+    svg path{
+        @include normal-transition;
+    }
+    &.tertiary-btn{
+        text-decoration: none;
+        background: transparent;
+        &:hover{
+            text-decoration: underline;
+            color: $yellowColor;
+            svg path{
+                fill: $yellowColor;
+            }
+        }
+    }
+}
+//START: BG and Lines
+.bg, .wave-lines{
+ @include fixed-wrapper;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+}
+.bg img{
+    width: 100vw;
+    height: 100vh;
+}
+//END: BG and Lines
+
+// START: Header
+header{
+    @include rel-wrapper;
+    @include flex-wrapper;
+    @include full-width;
+    z-index: 10;
+    padding: 7.41vh 4.18vw 0;
+    .site-logo{
+        @include block-element;
+        &.risd{
+            width: 12rem;
+        }
+        &.wongdoody{
+            width: 10rem;
+            padding-left: 0.75rem;
+            border-left: 1px solid $whiteColor;
+        }
+        img{
+            @include full-width;
+            @include block-element;
+        }
+    }
+
+    .site-logo-wrapper{
+        @include flex-wrapper;
+        align-items: center;
+        gap:1rem;
+    }
+}
+// END: Header
+
+//START: Menu Handler
+.menu-handler{
+    @include block-element;
+    @include rel-wrapper;
+    @include transform(rotate(-45deg));
+    width: 20px;
+    height: 20px;
+    background-color: $whiteColor;
+}
+//END: Menu Handler
+
+//START: Card
+main{
+    @include flex-wrapper;
+    justify-content: flex-end;
+    padding: 6vh 10.77vw 0;
+}
+.card{
+    @include fixed-wrapper;
+    @include flex-wrapper;
+    @include column-direction;
+    @include  card-style;
+    @include lg-view-card-padding;
+    @include normal-transition;
+    text-align: center;
+    color: $whiteColor;
+    width: 35rem;
+    height: 75vh;
+
+    //-------Trying Transition Option
+    // transform: translate3d(0,0,0) rotate3d(1, 1, 0, -360deg) rotate(1deg);
+    // perspective: 200rem;
+    //-------Trying Transition Option
+
+
+
+    // gap: 2.5vh;
+    .card-heading{
+        @include line-height;
+        font-weight: 700;
+        font-size: $largeFontSize;
+        margin-bottom: 2.26vh;
+        overflow:hidden;
+        em{
+            animation-delay: calc(#{$animDelay} + 0.3s); 
+        }
+    }
+    .description-wrapper{
+        @include flex-wrapper;
+        @include column-direction;
+        gap: 3.5vh;
+        margin-bottom: 2.1vh;
+        .para:first-child em{
+            animation-delay: calc(#{$animDelay} + 0.4s);
+        }
+        .para:last-child em{
+            animation-delay: calc( #{$animDelay} + 0.45s);
+        }
+    }
+    .para{
+        font-size: $normalFontSize;
+        overflow:hidden;
+    }
+    .down-arrow{
+        @include block-element;
+        @include fade-in;
+        width: 1rem;
+        margin:0 auto 4vh;
+        animation-delay: calc( #{$animDelay} + 0.55s);
+    }
+    .box-container{
+        @include flex-wrapper;
+        @include column-direction;
+        // @include fade-border-in;
+        padding: 3.1vh 2.4vw;
+        border: 1px solid transparent;
+        gap:1vh;
+        margin-bottom: 7vh;
+        // animation-delay: calc(#{$animDelay} + .65s);
+        .box-heading{
+            @include sanserif-font;
+            color: $yellowColor;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: $smallFontSize;
+            overflow:hidden;
+            em{
+                animation-delay: calc(#{$animDelay} + .6s);
+            }
+        }
+        .para em{
+            animation-delay: calc(#{$animDelay} + .65s);
+        }
+    }
+    .card-action-wrapper{
+        @include flex-wrapper;
+        @include abs-wrapper;
+        @include fade-in;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        bottom: 4vh;
+        left: 0;
+        right: 0;
+        margin: auto;
+        animation-delay: calc(#{$animDelay} + .7s);
+        span{
+            @include sanserif-font;
+            font-size: $smallFontSize1;
+            letter-spacing: 3px;
+        }
+    }
+    .question-reframe{
+        font-size: $smallFontSize;
+        padding: 10px;
+        border: 1px solid $whiteColor;
+    }
+    .question-block{
+        @include flex-wrapper;
+        align-items: center;
+        gap:1rem;
+        text-align: left;
+        .para{
+            font-size: $smallFontSize;
+        }
+        img{
+            width: 3rem;
+        }
+    }
+    em{
+        @include block-element;
+        @include load-from-bottom;
+    }
+    &.hide{
+        animation-name: card-hide-anim;
+        animation-duration: .8s;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+       
+    }
+}
+
+.card.show {
+        em, .box-container, .down-arrow{
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    em{
+        animation-name: load-from-bottom-anim;
+    }
+    .box-container{
+        animation-name: fade-border-in-anim;
+    }
+    .card-action-wrapper, .down-arrow{
+        animation-duration: .8s;
+        animation-fill-mode: forwards;
+        animation-name: fade-in-anim;
+    }
+}
+.question-number{
+    font-size: $normalFontSize;
+    font-weight: 700;
+    sup{
+        font-size: $smallFontSize1;
+        vertical-align: super;
+        padding-left: 2px;
+    }
+}
+
+.desc-card{
+    // @include transform(rotate(-8deg));
+    // transform-origin: bottom left;
+        transform: rotate3d(0, 1, 0, 24deg) rotate(4deg);
+        transform-origin: left bottom;
+        perspective: 200rem;
+    visibility: hidden;
+    z-index: -1;
+    *{
+        overflow: hidden;
+    }
+    &.show{
+        animation-duration: .8s;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+       animation-name: show-card-anim;
+       
+    }
+    .card-title, .card-sub-heading{
+        @include sanserif-font;
+        font-size: $smallFontSize;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+    .card-title{
+        margin-bottom: 3.6vh;
+        em{
+            animation-delay: $animDelay; 
+        }
+    }
+    .card-sub-heading em{
+        animation-delay: calc(#{$animDelay} + 0.15s); 
+    }
+    .card-heading em{
+        animation-delay: calc(#{$animDelay} + 0.2s); 
+    }
+    .description-wrapper .para em{
+        animation-delay: calc(#{$animDelay} + 0.25s);
+    }
+    .box-heading em{
+        animation-delay: calc(#{$animDelay} + 0.35s);
+    }
+    .question-reframe em{
+        animation-delay: calc(#{$animDelay} + 0.45s);
+    }
+
+    .card-heading-wrapper{
+        @include flex-wrapper;
+        @include column-direction;
+        gap:1.2vh;
+    }
+    .description-wrapper{
+        margin-bottom: 2.57vh;
+    }
+    .question-block{
+        @include load-from-bottom;
+    }
+    &.show .question-block{
+        animation-duration: .8s;
+        animation-fill-mode: forwards;
+        animation-delay: calc(#{$animDelay} + 0.45s); 
+        animation-name: load-from-bottom-anim
+    }
+    .card-action-wrapper{
+        animation-delay: calc(#{$animDelay} + 0.6s); 
+    }
+}
+//END: Card
+
+@import 'animation.scss';

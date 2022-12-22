@@ -1,0 +1,65 @@
+@import 'mixin.scss';
+
+@keyframes load-from-bottom-anim {
+    0%{
+        @include load-from-bottom;
+    }
+    100%{
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+
+@keyframes fade-border-in-anim {
+    0%{
+        border-color: transparent;
+    }
+    100%{
+        border-color: $yellowColor;
+    }
+}
+
+@keyframes fade-in-anim {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes card-hide-anim {
+    0%{
+         transform: rotate3d(0, 0, 0, 0) rotate(0);
+         transform-origin: bottom left;
+         visibility: visible;
+         z-index: 1;
+    }
+    100%{
+        transform: rotate3d(0, 0, 0, -24deg) rotate(-4deg);
+        transform-origin: left bottom;
+        perspective: 200rem;
+        opacity: 0;
+        z-index: -1;
+        
+    }
+    
+}
+
+@keyframes show-card-anim {
+    0%{
+        transform: rotate3d(0, 1, 0, 24deg) rotate(4deg);
+        perspective: 200rem;
+        transform-origin: bottom left;
+        visibility: hidden;
+        z-index: -1;
+        
+    }
+    100%{
+        transform: rotate3d(0, 0, 0, 0deg) rotate(0deg);
+        transform-origin: left bottom;
+        perspective: 200rem;
+        visibility: visible;
+        z-index: 1;
+    }
+}
